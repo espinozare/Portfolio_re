@@ -37,8 +37,16 @@ else:
     DEBUG = False   
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "web-42y52ttcgi0o.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "127.0.0.1",
+    "localhost",
+]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-42y52ttcgi0o.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+]
 
 INTERNAL_IPS = [
     "127.0.0.1",
