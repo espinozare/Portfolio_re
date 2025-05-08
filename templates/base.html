@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html 
+    lang="en" 
+    x-data="{ 
+        darkMode: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches).as('darkMode') 
+    }" 
+    :class="{ 'dark': darkMode }"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    {% include 'includes/navbar.html' %}
+    {% include 'includes/topbar.html' %}
+
+    
+        {% block content %}{% endblock %}
+    
+
+    {% include 'includes/footer.html' %}
+    
+    <!-- Dark Mode Toggle -->
+    <button @click="darkMode = !darkMode" 
+            class="fixed bottom-4 right-4 p-3 rounded-full bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 shadow-lg z-50">
+        <span x-show="!darkMode">🌙</span>
+        <span x-show="darkMode">☀️</span>
+    </button>
+</body>
+</html>
